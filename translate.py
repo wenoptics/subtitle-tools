@@ -1,6 +1,8 @@
 import sys
 import os
 
+from utils import grouper
+
 import webvtt
 from googletrans import Translator
 
@@ -18,7 +20,12 @@ vtt_ret = webvtt.WebVTT()
 
 ori_list = [v.text or "" for v in vtt_src]
 translator = Translator()
-translated = translator.translate(ori_list, dest=dst_lang, src='en')
+translated = []
+
+# Group lines by some number so the translation payload is not too large
+for g in grouper(ori_list, 100):
+    print(g)
+    translated += translator.translate(g, dest=dst_lang, src='en').text
 
 for i in range(len(vtt_src)):
     ori_text = vtt_src[i].text
