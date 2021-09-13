@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "subtitle-tools"
+version = "0.1.0"
+description = ""
+authors = ["Grayson Wen <wenoptics@163.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+webvtt-py = "^0.4.6"
+googletrans = "3.1.0a0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^6.2.5"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
